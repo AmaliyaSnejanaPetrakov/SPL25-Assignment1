@@ -35,6 +35,8 @@ AudioTrack::~AudioTrack() {
     #ifdef DEBUG
     std::cout << "AudioTrack destructor called for: " << title << std::endl;
     #endif
+
+    
     // Your code here...
 }
 
