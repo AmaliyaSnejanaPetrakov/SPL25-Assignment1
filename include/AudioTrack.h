@@ -110,4 +110,9 @@ public:
     std::vector<std::string> get_artists() const { return artists; }
 
     void set_bpm(int new_bpm) { bpm = new_bpm; }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/new_branch
 };

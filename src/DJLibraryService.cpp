@@ -6,12 +6,29 @@
 #include <memory>
 #include <filesystem>
 
+<<<<<<< HEAD
 DJLibraryService::DJLibraryService(const Playlist &playlist)
     : playlist(playlist) {}
+=======
+
+DJLibraryService::DJLibraryService(const Playlist& playlist) 
+    : playlist(playlist), library() {}
+
+
+DJLibraryService::~DJLibraryService()
+{
+    for (AudioTrack *track : library)
+    {
+        delete track;
+    }
+    library.clear();
+}
+>>>>>>> origin/new_branch
 /**
  * @brief Load a playlist from track indices referencing the library
  * @param library_tracks Vector of track info from config
  */
+<<<<<<< HEAD
 
 DJLibraryService::~DJLibraryService()
 {
@@ -27,6 +44,11 @@ void DJLibraryService::buildLibrary(const std::vector<SessionConfig::TrackInfo> 
     // //Todo: Implement buildLibrary method
     // std::cout << "TODO: Implement DJLibraryService::buildLibrary method\n"<< library_tracks.size() << " tracks to be loaded into library.\n";
 
+=======
+void DJLibraryService::buildLibrary(const std::vector<SessionConfig::TrackInfo>& library_tracks) {
+    //Todo: Implement buildLibrary method
+    //std::cout << "TODO: Implement DJLibraryService::buildLibrary method\n"<< library_tracks.size() << " tracks to be loaded into library.\n";
+>>>>>>> origin/new_branch
     for (const SessionConfig::TrackInfo &info : library_tracks)
     {
         if (info.type == "MP3")
@@ -45,6 +67,10 @@ void DJLibraryService::buildLibrary(const std::vector<SessionConfig::TrackInfo> 
         }
     }
     std::cout << "[INFO] Track library built: " << library_tracks.size() << " tracks loaded\n";
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/new_branch
 }
 
 /**
@@ -144,6 +170,9 @@ std::vector<std::string> DJLibraryService::getTrackTitles() const
     {
         titles.push_back(tr->get_title());
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_branch
     return titles; // Placeholder
 }

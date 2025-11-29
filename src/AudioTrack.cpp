@@ -6,8 +6,20 @@
 AudioTrack::AudioTrack(const std::string &title, const std::vector<std::string> &artists,
                        int duration, int bpm, size_t waveform_samples)
     : title(title), artists(artists), duration_seconds(duration), bpm(bpm),
+<<<<<<< HEAD
       waveform_size(waveform_samples)
 {
+=======
+      waveform_data(nullptr), waveform_size(waveform_samples)
+{
+
+    // std::cout << "AudioTrack created: " << title << " by \n";
+    // for (const auto &artist : artists)
+    // {
+    //     std::cout << artist << " ";
+    // }
+    // std::cout << std::endl;
+>>>>>>> origin/new_branch
 
     // Allocate memory for waveform analysis
     waveform_data = new double[waveform_size];
@@ -40,25 +52,45 @@ AudioTrack::~AudioTrack()
     std::cout << "AudioTrack destructor called for: " << title << std::endl;
 #endif
     // Your code here...
-
     delete[] waveform_data;
     waveform_data = nullptr;
 }
 
+<<<<<<< HEAD
 AudioTrack::AudioTrack(const AudioTrack &other)
 {
+=======
+AudioTrack::AudioTrack(const AudioTrack &other) : title(other.title),
+                                                  artists(other.artists),
+                                                  duration_seconds(other.duration_seconds),
+                                                  bpm(other.bpm),
+                                                  waveform_data(nullptr),
+                                                  waveform_size(other.waveform_size)
+{
+
+    // std::cout << "AudioTrack created: " << title << " by \n";
+    // for (const auto &artist : artists)
+    // {
+    //     std::cout << artist << " ";
+    // }
+    // std::cout << std::endl;
+
+>>>>>>> origin/new_branch
 // TODO: Implement the copy constructor
 #ifdef DEBUG
     std::cout << "AudioTrack copy constructor called for: " << other.title << std::endl;
 #endif
     // Your code here...
 
+<<<<<<< HEAD
     title = other.title;
     artists = other.artists;
     duration_seconds = other.duration_seconds;
     bpm = other.bpm;
     waveform_size = other.waveform_size;
 
+=======
+>>>>>>> origin/new_branch
     waveform_data = new double[other.waveform_size];
     for (size_t i = 0; i < other.waveform_size; i++)
     {
@@ -95,24 +127,37 @@ AudioTrack &AudioTrack::operator=(const AudioTrack &other)
     return *this;
 }
 
+<<<<<<< HEAD
 AudioTrack::AudioTrack(AudioTrack &&other) noexcept
 {
+=======
+AudioTrack::AudioTrack(AudioTrack &&other) noexcept : title(std::move(other.title)),
+                                                      artists(std::move(other.artists)),
+                                                      duration_seconds(other.get_duration()),
+                                                      bpm(other.bpm),
+                                                      waveform_data(other.waveform_data),
+                                                      waveform_size(other.waveform_size)
+{
+
+    // std::cout << "AudioTrack created: " << title << " by \n";
+    // for (const auto &artist : artists)
+    // {
+    //     std::cout << artist << " ";
+    // }
+    // std::cout << std::endl;
+>>>>>>> origin/new_branch
 // TODO: Implement the move constructor
 #ifdef DEBUG
     std::cout << "AudioTrack move constructor called for: " << other.title << std::endl;
 #endif
     // Your code here...
-
-    this->waveform_data = other.waveform_data;
-
-    title = other.title;
-    artists = other.artists;
-    duration_seconds = other.duration_seconds;
-    bpm = other.bpm;
-    waveform_size = other.waveform_size;
-
     other.waveform_data = nullptr;
     other.waveform_size = 0;
+<<<<<<< HEAD
+=======
+    other.duration_seconds = 0;
+    other.bpm = 0;
+>>>>>>> origin/new_branch
 }
 
 AudioTrack &AudioTrack::operator=(AudioTrack &&other) noexcept
@@ -123,7 +168,10 @@ AudioTrack &AudioTrack::operator=(AudioTrack &&other) noexcept
     std::cout << "AudioTrack move assignment called for: " << other.title << std::endl;
 #endif
     // Your code here...
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_branch
     if (this == &other)
     {
         return *this;

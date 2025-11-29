@@ -64,9 +64,14 @@ public:
      * HINT: How should ownership transfer from one wrapper to another?
      * What should happen to the source wrapper after the move?
      */
+<<<<<<< HEAD
     PointerWrapper(PointerWrapper &&other) noexcept
     {
         ptr = other.ptr;
+=======
+    PointerWrapper(PointerWrapper &&other) noexcept : ptr(other.ptr)
+    {
+>>>>>>> origin/new_branch
         other.ptr = nullptr;
     }
 
@@ -141,9 +146,16 @@ public:
      */
     T *release()
     {
+<<<<<<< HEAD
         T *temp = ptr;
         ptr = nullptr;
         return temp;
+=======
+        T* temp = ptr; 
+        ptr = nullptr; 
+        return temp;
+
+>>>>>>> origin/new_branch
     }
 
     /**
@@ -153,11 +165,19 @@ public:
      */
     void reset(T *new_ptr = nullptr)
     {
+<<<<<<< HEAD
         if (ptr != nullptr)
         {
             delete ptr;
         }
         ptr = new_ptr;
+=======
+        if (ptr != nullptr) {
+            delete ptr;
+        }
+        ptr=new_ptr;
+
+>>>>>>> origin/new_branch
     }
 
     // ========== UTILITY FUNCTIONS ==========
@@ -169,7 +189,11 @@ public:
      */
     explicit operator bool() const
     {
+<<<<<<< HEAD
         return ptr != nullptr;
+=======
+        return ptr!=nullptr;
+>>>>>>> origin/new_branch
     }
 
     /**
@@ -178,9 +202,16 @@ public:
      */
     void swap(PointerWrapper &other) noexcept
     {
+<<<<<<< HEAD
         T *temp = other.ptr;
         other.ptr = ptr;
         ptr = temp;
+=======
+        T* temp=other.ptr;
+        other.ptr=ptr;
+        ptr=temp;
+
+>>>>>>> origin/new_branch
     }
 };
 
@@ -208,8 +239,13 @@ void swap(PointerWrapper<T> &lhs, PointerWrapper<T> &rhs) noexcept
     // TODO: Implement global swap function
     // HINT: You can use the member swap function
     // your code here...
+<<<<<<< HEAD
 
     lhs.swap(rhs);
+=======
+    lhs.swap(rhs);
+
+>>>>>>> origin/new_branch
 }
 
 #endif // POINTERWRAPPER_H

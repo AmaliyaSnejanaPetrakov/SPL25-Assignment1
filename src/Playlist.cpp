@@ -23,8 +23,80 @@ Playlist::~Playlist()
 #ifdef DEBUG
     std::cout << "Destroying playlist: " << playlist_name << std::endl;
 #endif
+<<<<<<< HEAD
 }
 
+=======
+}
+
+
+Playlist::Playlist(const Playlist& other)
+    : head(nullptr), playlist_name(other.playlist_name), track_count(0)
+{
+    PlaylistNode* currOther = other.head;
+    PlaylistNode** currThis = &head;
+
+    while (currOther) {
+        // Clone the AudioTrack
+        AudioTrack* clonedTrack = currOther->track->clone().release();
+
+        // Create new node
+        *currThis = new PlaylistNode(clonedTrack);
+
+        // Move to next
+        currThis = &((*currThis)->next);
+        currOther = currOther->next;
+
+        track_count++;
+    }
+
+    #ifdef DEBUG
+    std::cout << "[Copy Constructor] Playlist '" << playlist_name
+              << "' copied with " << track_count << " tracks." << std::endl;
+    #endif
+}
+
+// Copy assignment operator
+Playlist& Playlist::operator=(const Playlist& other)
+{
+    if (this == &other) return *this; // self-assignment check
+
+    // First, free current playlist
+    PlaylistNode* current = head;
+    while (current) {
+        PlaylistNode* next = current->next;
+        delete current->track;
+        delete current;
+        current = next;
+    }
+
+    head = nullptr;
+    track_count = 0;
+    playlist_name = other.playlist_name;
+
+    // Deep copy from other
+    PlaylistNode* currOther = other.head;
+    PlaylistNode** currThis = &head;
+
+    while (currOther) {
+        AudioTrack* clonedTrack = currOther->track->clone().release();
+        *currThis = new PlaylistNode(clonedTrack);
+        currThis = &((*currThis)->next);
+        currOther = currOther->next;
+
+        track_count++;
+    }
+
+    #ifdef DEBUG
+    std::cout << "[Assignment] Playlist '" << playlist_name
+              << "' assigned with " << track_count << " tracks." << std::endl;
+    #endif
+
+    return *this;
+}
+
+
+>>>>>>> origin/new_branch
 void Playlist::add_track(AudioTrack *track)
 {
     if (!track)

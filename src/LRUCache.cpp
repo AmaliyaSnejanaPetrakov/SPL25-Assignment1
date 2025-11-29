@@ -20,8 +20,14 @@ AudioTrack *LRUCache::get(const std::string &track_id)
 /**
  * TODO: Implement the put() method for LRUCache
  */
+<<<<<<< HEAD
 bool LRUCache::put(PointerWrapper<AudioTrack> track)
 {
+=======
+bool LRUCache::put(PointerWrapper<AudioTrack> track) {
+
+
+>>>>>>> origin/new_branch
     if (!track)
         return false;
 
@@ -106,8 +112,12 @@ size_t LRUCache::findSlot(const std::string &track_id) const
 /**
  * TODO: Implement the findLRUSlot() method for LRUCache
  */
+<<<<<<< HEAD
 size_t LRUCache::findLRUSlot() const
 {
+=======
+size_t LRUCache::findLRUSlot() const {
+>>>>>>> origin/new_branch
     size_t minIndex = max_size;
     bool allEmpty = true;
     size_t minTime = 0;

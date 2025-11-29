@@ -24,8 +24,12 @@ void WAVTrack::load()
     std::cout << "  → Fast loading due to uncompressed format.\n";
 }
 
+<<<<<<< HEAD
 void WAVTrack::analyze_beatgrid()
 {
+=======
+void WAVTrack::analyze_beatgrid() {
+>>>>>>> origin/new_branch
     std::cout << "[WAVTrack::analyze_beatgrid] Analyzing beat grid for: \"" << title << "\"\n";
     // TODO: Implement WAV-specific beat detection analysis
     // Requirements:
@@ -39,6 +43,10 @@ void WAVTrack::analyze_beatgrid()
 
     std::cout << "  → Estimated beats: " << beats_estimated
               << "  → Precision factor: " << precision_factor << " (uncompressed audio)\n";
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/new_branch
 }
 
 double WAVTrack::get_quality_score() const
@@ -46,7 +54,6 @@ double WAVTrack::get_quality_score() const
     // TODO: Implement WAV quality scoring
     // NOTE: Use exactly 2 spaces before each arrow (→) character
     // NOTE: Cast beats to integer when printing
-
     double score = 70.0;
     if (sample_rate >= 44100)
         score += 10;
@@ -66,7 +73,10 @@ double WAVTrack::get_quality_score() const
 PointerWrapper<AudioTrack> WAVTrack::clone() const
 {
     // TODO: Implement the clone method
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_branch
     WAVTrack *newObj = new WAVTrack(*this);
     return PointerWrapper<AudioTrack>(newObj); // Replace with your implementation
 }
