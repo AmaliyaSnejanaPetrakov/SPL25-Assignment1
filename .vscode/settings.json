@@ -34,14 +34,15 @@
     // C++ specific settings
     "C_Cpp.intelliSenseEngine": "default",
     "C_Cpp.autocomplete": "disabled",
-    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.errorSquiggles": "disabled",
     
     // File associations
     "files.associations": {
         "*.h": "cpp",
         "*.cpp": "cpp",
         "*.txt": "plaintext",
-        "new": "cpp",
+        "iostream": "cpp",
+        "random": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -75,7 +76,6 @@
         "memory_resource": "cpp",
         "numeric": "cpp",
         "optional": "cpp",
-        "random": "cpp",
         "ratio": "cpp",
         "string_view": "cpp",
         "system_error": "cpp",
@@ -86,9 +86,9 @@
         "initializer_list": "cpp",
         "iomanip": "cpp",
         "iosfwd": "cpp",
-        "iostream": "cpp",
         "istream": "cpp",
         "limits": "cpp",
+        "new": "cpp",
         "numbers": "cpp",
         "ostream": "cpp",
         "span": "cpp",

@@ -17,11 +17,12 @@ void MP3Track::load() {
               << "\" at " << bitrate << " kbps...\n";
     // TODO: Implement MP3 loading with format-specific operations
     // NOTE: Use exactly 2 spaces before the arrow (→) character
-
-    if(has_id3_tags){
+    if (has_id3_tags)
+    {
         std::cout << "  → Processing ID3 metadata (artist info, album art, etc.)...\n";
     }
-    else{
+    else
+    {
         std::cout << "  → No ID3 tags found.\n";
     }
 
@@ -34,11 +35,12 @@ void MP3Track::analyze_beatgrid() {
     // TODO: Implement MP3-specific beat detection analysis
     // NOTE: Use exactly 2 spaces before each arrow (→) character
 
+
     double beats_estimated = (duration_seconds / 60.0) * bpm;
     double precision_factor = bitrate / 320.0;
 
-    std::cout << "  → Estimated beats: " << beats_estimated << 
-    "  → Compression precision factor: " << precision_factor << "\n";
+    std::cout << "  → Estimated beats: " << beats_estimated << "  → Compression precision factor: " << precision_factor << "\n";
+
 }
 
 double MP3Track::get_quality_score() const {
@@ -46,27 +48,30 @@ double MP3Track::get_quality_score() const {
     // NOTE: This method does NOT print anything
 
     double score = (bitrate / 320.0) * 100.0;
-    
-    if(has_id3_tags)
+
+    if (has_id3_tags)
         score = score + 5;
-    
-    if(bitrate < 128)
+
+    if (bitrate < 128)
         score = score - 10;
 
-    if (score < 0.0) {
+    if (score < 0.0)
+    {
         score = 0.0;
     }
-    else if (score > 100.0) {
-         score = 100.0;
+    else if (score > 100.0)
+    {
+        score = 100.0;
     }
 
     return score; // Replace with your implementation
+
+
 }
 
 PointerWrapper<AudioTrack> MP3Track::clone() const {
     // TODO: Implement polymorphic cloning
-
-    MP3Track* newObj = new MP3Track(*this);
-
-    return PointerWrapper<AudioTrack>(newObj); // Replace with your implementation
+    // MP3Track *newObj = new MP3Track(*this);
+    // return PointerWrapper<AudioTrack>(newObj); // Replace with your implementation
+    return PointerWrapper<AudioTrack>(new MP3Track(*this));
 }
