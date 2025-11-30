@@ -23,10 +23,6 @@ Playlist::~Playlist()
 #ifdef DEBUG
     std::cout << "Destroying playlist: " << playlist_name << std::endl;
 #endif
-<<<<<<< HEAD
-}
-
-=======
 }
 
 
@@ -96,7 +92,6 @@ Playlist& Playlist::operator=(const Playlist& other)
 }
 
 
->>>>>>> origin/new_branch
 void Playlist::add_track(AudioTrack *track)
 {
     if (!track)

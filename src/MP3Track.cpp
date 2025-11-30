@@ -3,26 +3,20 @@
 #include <cmath>
 #include <algorithm>
 
-MP3Track::MP3Track(const std::string &title, const std::vector<std::string> &artists,
+MP3Track::MP3Track(const std::string& title, const std::vector<std::string>& artists, 
                    int duration, int bpm, int bitrate, bool has_tags)
-    : AudioTrack(title, artists, duration, bpm), bitrate(bitrate), has_id3_tags(has_tags)
-{
+    : AudioTrack(title, artists, duration, bpm), bitrate(bitrate), has_id3_tags(has_tags) {
 
     std::cout << "MP3Track created: " << bitrate << " kbps" << std::endl;
 }
 
 // ========== TODO: STUDENTS IMPLEMENT THESE VIRTUAL FUNCTIONS ==========
 
-void MP3Track::load()
-{
+void MP3Track::load() {
     std::cout << "[MP3Track::load] Loading MP3: \"" << title
               << "\" at " << bitrate << " kbps...\n";
     // TODO: Implement MP3 loading with format-specific operations
     // NOTE: Use exactly 2 spaces before the arrow (→) character
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/new_branch
     if (has_id3_tags)
     {
         std::cout << "  → Processing ID3 metadata (artist info, album art, etc.)...\n";
@@ -36,9 +30,8 @@ void MP3Track::load()
     std::cout << "  → Load complete.\n";
 }
 
-void MP3Track::analyze_beatgrid()
-{
-    std::cout << "[MP3Track::analyze_beatgrid] Analyzing beat grid for: \"" << title << "\"\n";
+void MP3Track::analyze_beatgrid() {
+     std::cout << "[MP3Track::analyze_beatgrid] Analyzing beat grid for: \"" << title << "\"\n";
     // TODO: Implement MP3-specific beat detection analysis
     // NOTE: Use exactly 2 spaces before each arrow (→) character
 
@@ -46,15 +39,11 @@ void MP3Track::analyze_beatgrid()
     double beats_estimated = (duration_seconds / 60.0) * bpm;
     double precision_factor = bitrate / 320.0;
 
-    std::cout << "  → Estimated beats: " << beats_estimated << "  → Compression precision factor: " << precision_factor << "\n";
-<<<<<<< HEAD
-=======
+    std::cout << "  → Estimated beats: " << static_cast<int>(beats_estimated) << "  → Compression precision factor: " << precision_factor << "\n";
 
->>>>>>> origin/new_branch
 }
 
-double MP3Track::get_quality_score() const
-{
+double MP3Track::get_quality_score() const {
     // TODO: Implement comprehensive quality scoring
     // NOTE: This method does NOT print anything
 
@@ -80,17 +69,9 @@ double MP3Track::get_quality_score() const
 
 }
 
-PointerWrapper<AudioTrack> MP3Track::clone() const
-{
+PointerWrapper<AudioTrack> MP3Track::clone() const {
     // TODO: Implement polymorphic cloning
-<<<<<<< HEAD
-
-    MP3Track *newObj = new MP3Track(*this);
-
-    return PointerWrapper<AudioTrack>(newObj); // Replace with your implementation
-=======
     // MP3Track *newObj = new MP3Track(*this);
     // return PointerWrapper<AudioTrack>(newObj); // Replace with your implementation
     return PointerWrapper<AudioTrack>(new MP3Track(*this));
->>>>>>> origin/new_branch
 }

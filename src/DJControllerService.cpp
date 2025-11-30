@@ -9,15 +9,8 @@ DJControllerService::DJControllerService(size_t cache_size)
 /**
  * TODO: Implement loadTrackToCache method
  */
-<<<<<<< HEAD
-int DJControllerService::loadTrackToCache(AudioTrack &track)
-{
-    // Your implementation here
-
-=======
 int DJControllerService::loadTrackToCache(AudioTrack& track) {
     // Your implementation here 
->>>>>>> origin/new_branch
     if (cache.contains(track.get_title()))
     {
         cache.get(track.get_title());
@@ -43,13 +36,11 @@ int DJControllerService::loadTrackToCache(AudioTrack& track) {
         return 0; // Placeholder
 }
 
-void DJControllerService::set_cache_size(size_t new_size)
-{
+void DJControllerService::set_cache_size(size_t new_size) {
     cache.set_capacity(new_size);
 }
-// implemented
-void DJControllerService::displayCacheStatus() const
-{
+//implemented
+void DJControllerService::displayCacheStatus() const {
     std::cout << "\n=== Cache Status ===\n";
     cache.displayStatus();
     std::cout << "====================\n";
@@ -58,13 +49,8 @@ void DJControllerService::displayCacheStatus() const
 /**
  * TODO: Implement getTrackFromCache method
  */
-AudioTrack *DJControllerService::getTrackFromCache(const std::string &track_title)
-{
+AudioTrack* DJControllerService::getTrackFromCache(const std::string& track_title) {
     // Your implementation here
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/new_branch
     AudioTrack *raw = cache.get(track_title);
     if (raw != nullptr)
         return raw;
