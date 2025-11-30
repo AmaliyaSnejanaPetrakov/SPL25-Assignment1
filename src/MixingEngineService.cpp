@@ -25,7 +25,7 @@ MixingEngineService::~MixingEngineService() {
     decks[0] = nullptr;
     decks[1] = nullptr;
     
-    std::cout << "[MixingEngineService] Cleaning up decks...."<< std::endl;
+    std::cout << "[MixingEngineService] Cleaning up decks..."<< std::endl;
 
 }
 
@@ -60,16 +60,23 @@ int MixingEngineService::loadTrackToDeck(const AudioTrack& track) {
     if(decks[active_deck] != nullptr && auto_sync){
         if(!can_mix_tracks(newTrack)){
                 sync_bpm(newTrack);
-                std::cout << "[Load Complete] "<< newTrack->get_title()<< "is now loaded on deck" << target<< std::endl;
-
+                // std::cout << "[Load Complete] '"<< newTrack->get_title()<< "' is now loaded on deck " << target<< std::endl;
         }
-        std::cout << "[Unload] Unloading previous deck "<<active_deck<< (*decks[active_deck]).get_title()<< std::endl;
+        std::cout << "[Load Complete] '"<< newTrack->get_title()<< "' is now loaded on deck " << target<< std::endl;
+
+        std::cout << "[Unload] Unloading previous deck " <<active_deck<< " (" << (*decks[active_deck]).get_title()<< ")" << std::endl;
+        
         delete decks[active_deck];
         decks[active_deck]=nullptr; 
     }
+    else{
+        std::cout << "[Load Complete] '"<< newTrack->get_title()<< "' is now loaded on deck " << target<< std::endl;
+
+    }
     decks[target]=newTrack.release();
     active_deck=target;
-    std::cout << " [Active Deck] Switched to deck"<<active_deck<< std::endl;
+    
+    std::cout << "[Active Deck] Switched to deck " <<active_deck<< std::endl;
     return active_deck; 
 
 }
@@ -121,7 +128,7 @@ bool MixingEngineService::can_mix_tracks(const PointerWrapper<AudioTrack>& track
  */
 void MixingEngineService::sync_bpm(const PointerWrapper<AudioTrack>& track) const {
     // Your implementation here
-    if(decks[0]!=nullptr&&decks[1]!=nullptr){
+    if(decks[0]!=nullptr && decks[1]!=nullptr){
         int originBPM = track->get_bpm();
         int activeBPM = decks[active_deck]->get_bpm();
 
@@ -129,6 +136,6 @@ void MixingEngineService::sync_bpm(const PointerWrapper<AudioTrack>& track) cons
 
         track->set_bpm(avg);
 
-        std::cout << "[Sync BPM] Syncing BPM from "<< originBPM<< "to "<<avg << active_deck <<"\n"<< std::endl;
+        std::cout << "[Sync BPM] Syncing BPM from "<< originBPM << " to "<<avg << active_deck <<"\n"<< std::endl;
     }
 }
