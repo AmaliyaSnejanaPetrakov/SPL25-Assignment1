@@ -110,5 +110,4 @@ public:
 
     void set_bpm(int new_bpm) { bpm = new_bpm; }
 
-
 };
