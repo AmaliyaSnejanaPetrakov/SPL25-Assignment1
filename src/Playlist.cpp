@@ -33,13 +33,9 @@ Playlist::Playlist(const Playlist& other)
     PlaylistNode** currThis = &head;
 
     while (currOther) {
-        // Clone the AudioTrack
         AudioTrack* clonedTrack = currOther->track->clone().release();
-
-        // Create new node
         *currThis = new PlaylistNode(clonedTrack);
 
-        // Move to next
         currThis = &((*currThis)->next);
         currOther = currOther->next;
 
@@ -52,12 +48,10 @@ Playlist::Playlist(const Playlist& other)
     #endif
 }
 
-// Copy assignment operator
 Playlist& Playlist::operator=(const Playlist& other)
 {
-    if (this == &other) return *this; // self-assignment check
+    if (this == &other) return *this; 
 
-    // First, free current playlist
     PlaylistNode* current = head;
     while (current) {
         PlaylistNode* next = current->next;
@@ -70,7 +64,6 @@ Playlist& Playlist::operator=(const Playlist& other)
     track_count = 0;
     playlist_name = other.playlist_name;
 
-    // Deep copy from other
     PlaylistNode* currOther = other.head;
     PlaylistNode** currThis = &head;
 

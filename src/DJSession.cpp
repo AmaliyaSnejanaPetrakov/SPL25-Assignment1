@@ -83,8 +83,9 @@ int DJSession::load_track_to_controller(const std::string &track_name)
         stats.errors = stats.errors + 1;
         return 0;
     }
-    int loadtochase = controller_service.loadTrackToCache(*track);
     std::cout << "[System] Loading track '" << track_name << "' to controller..." << std::endl;
+
+    int loadtochase = controller_service.loadTrackToCache(*track);
     controller_service.displayCacheStatus();
     switch (loadtochase)
     {
@@ -204,16 +205,16 @@ void DJSession::simulate_dj_performance()
             std::vector<std::string> loadplaylist = library_service.getTrackTitles();
             for (const std::string &title : loadplaylist)
             {
-                std::cout << "\n–- Processing: " << title << std::endl;
+                std::cout << "\n--- Processing: " << title << " ---"<< std::endl;
                 stats.tracks_processed = stats.tracks_processed + 1;
 
-                int controller_result = load_track_to_controller(title);
+                load_track_to_controller(title);
 
-                if (controller_result == 0)
-                {
-                    std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
-                    continue;
-                }
+                // if (controller_result == 0)
+                // {
+                //     std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
+                //     continue;
+                // }
 
                 bool loadtomixer = load_track_to_mixer_deck(title);
 
@@ -222,9 +223,11 @@ void DJSession::simulate_dj_performance()
                     std::cerr << "[ERROR] Failed to load to mixer" << std::endl;
                     continue;
                 }
-                mixing_service.displayDeckStatus();
-
+                // mixing_service.displayDeckStatus();
+                
             }
+            print_session_summary();
+
         }
     }
 
@@ -247,15 +250,15 @@ void DJSession::simulate_dj_performance()
             std::vector<std::string> loadplaylist = library_service.getTrackTitles();
             for (const std::string &title : loadplaylist)
             {
-                std::cout << "\n–- Processing: " << title << std::endl;
+                std::cout << "\n--- Processing: " << title << " ---"<< std::endl;
                 stats.tracks_processed = stats.tracks_processed + 1;
 
-                int controller_result = load_track_to_controller(title);
-                if (controller_result == 0)
-                {
-                    std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
-                    continue;
-                }
+                load_track_to_controller(title);
+                // if (controller_result == 0)
+                // {
+                //     std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
+                //     continue;
+                // }
 
                 bool loadtomixer = load_track_to_mixer_deck(title);
                 if (!loadtomixer)
@@ -263,12 +266,14 @@ void DJSession::simulate_dj_performance()
                     std::cerr << "[ERROR] Failed to load to mixer" << std::endl;
                     continue;
                 }
+                print_session_summary();
+
             }
         }
     }
-    print_session_summary();
+    //  print_session_summary();
 
-    std::cerr << "Session cancelled by user or all playlists played." << std::endl;
+    std::cout << "Session cancelled by user or all playlists played." << std::endl;
 
     stats.tracks_processed = 0;
     stats.cache_hits = 0;

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <memory>
 #include <filesystem>
+#include <algorithm>
 
 
 DJLibraryService::DJLibraryService(const Playlist& playlist) 
@@ -32,14 +33,14 @@ void DJLibraryService::buildLibrary(const std::vector<SessionConfig::TrackInfo>&
         {
             AudioTrack *mp3tr = new MP3Track(info.title, info.artists, info.duration_seconds,
                                              info.bpm, info.extra_param1, info.extra_param2);
-            std::cout << "MP3Track created: " << info.extra_param1 << " kbps\n";
+            // std::cout << "MP3Track created: " << info.extra_param1 << " kbps\n";
             library.push_back(mp3tr);
         }
         else if (info.type == "WAV")
         {
             AudioTrack *wavtr = new WAVTrack(info.title, info.artists, info.duration_seconds,
                                              info.bpm, info.extra_param1, info.extra_param2);
-            std::cout << "WAVTrack created: " << info.extra_param1 << "Hz/" << info.extra_param2 << "bit\n";
+            // std::cout << "WAVTrack created: " << info.extra_param1 << "Hz/" << info.extra_param2 << "bit\n";
             library.push_back(wavtr);
         }
     }
@@ -117,7 +118,7 @@ void DJLibraryService::loadPlaylistFromIndices(const std::string& playlist_name,
         playlist.add_track(cloned.release());
         added_count++;
 
-        std::cout << "Added '" << track->get_title() << "' to playlist '" << playlist_name << "'\n";
+        // std::cout << "Added '" << track->get_title() << "' to playlist '" << playlist_name << "'\n";
     }
 
     std::cout << "[INFO] Playlist loaded: " << playlist_name << " (" << added_count << " tracks)\n";
@@ -137,5 +138,6 @@ std::vector<std::string> DJLibraryService::getTrackTitles() const {
     {
         titles.push_back(tr->get_title());
     }
+    std::reverse(titles.begin(), titles.end());
     return titles; // Placeholder
 }
