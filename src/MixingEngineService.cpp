@@ -127,8 +127,7 @@ bool MixingEngineService::can_mix_tracks(const PointerWrapper<AudioTrack> &track
 void MixingEngineService::sync_bpm(const PointerWrapper<AudioTrack> &track) const
 {
     // Your implementation here
-    // if (decks[0] != nullptr && decks[1] != nullptr)
-    // {
+        
         int originBPM = track->get_bpm();
         int activeBPM = decks[active_deck]->get_bpm();
 
@@ -137,5 +136,5 @@ void MixingEngineService::sync_bpm(const PointerWrapper<AudioTrack> &track) cons
         track->set_bpm(avg);
 
         std::cout << "[Sync BPM] Syncing BPM from " << originBPM << " to " << avg  << std::endl;
-    // }
+        
 }

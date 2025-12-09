@@ -210,11 +210,6 @@ void DJSession::simulate_dj_performance()
 
                 load_track_to_controller(title);
 
-                // if (controller_result == 0)
-                // {
-                //     std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
-                //     continue;
-                // }
 
                 bool loadtomixer = load_track_to_mixer_deck(title);
 
@@ -223,7 +218,6 @@ void DJSession::simulate_dj_performance()
                     std::cerr << "[ERROR] Failed to load to mixer" << std::endl;
                     continue;
                 }
-                // mixing_service.displayDeckStatus();
                 
             }
             print_session_summary();
@@ -254,11 +248,7 @@ void DJSession::simulate_dj_performance()
                 stats.tracks_processed = stats.tracks_processed + 1;
 
                 load_track_to_controller(title);
-                // if (controller_result == 0)
-                // {
-                //     std::cerr << "[ERROR] Failed to load track to controller cache: " << title << std::endl;
-                //     continue;
-                // }
+            
 
                 bool loadtomixer = load_track_to_mixer_deck(title);
                 if (!loadtomixer)
@@ -271,7 +261,6 @@ void DJSession::simulate_dj_performance()
             }
         }
     }
-    //  print_session_summary();
 
     std::cout << "Session cancelled by user or all playlists played." << std::endl;
 

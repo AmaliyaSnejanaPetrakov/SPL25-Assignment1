@@ -116,12 +116,6 @@ AudioTrack::AudioTrack(AudioTrack &&other) noexcept : title(std::move(other.titl
                                                       waveform_size(other.waveform_size)
 {
 
-    // std::cout << "AudioTrack created: " << title << " by \n";
-    // for (const auto &artist : artists)
-    // {
-    //     std::cout << artist << " ";
-    // }
-    // std::cout << std::endl;
 // TODO: Implement the move constructor
 #ifdef DEBUG
     std::cout << "AudioTrack move constructor called for: " << other.title << std::endl;
