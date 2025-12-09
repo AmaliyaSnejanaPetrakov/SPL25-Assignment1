@@ -57,13 +57,6 @@ public:
 
 
 
-///////////////////////////////////////////////////////////////למממש רת חוק ה5
-
-
-
-
-
-
     /**
      * @brief Construct a new DJSession orchestrator
      * @param name Session identifier
