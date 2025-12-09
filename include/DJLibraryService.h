@@ -17,12 +17,17 @@ public:
     DJLibraryService(): playlist(), library(){}
     ~DJLibraryService();
 
+
+    DJLibraryService(const DJLibraryService& other) = delete; 
+    DJLibraryService& operator=(const DJLibraryService& other) = delete;
+
     /**
      * @brief Build the track library from parsed config data
      * @param library_tracks Vector of track info from config
      */
     void buildLibrary(const std::vector<SessionConfig::TrackInfo>& library_tracks);
 
+    
     /**
      * @brief Load a playlist by constructing it from track indices
      * @param playlist_name Name of the playlist
