@@ -9,12 +9,6 @@ AudioTrack::AudioTrack(const std::string &title, const std::vector<std::string> 
       waveform_data(nullptr), waveform_size(waveform_samples)
 {
 
-    // std::cout << "AudioTrack created: " << title << " by \n";
-    // for (const auto &artist : artists)
-    // {
-    //     std::cout << artist << " ";
-    // }
-    // std::cout << std::endl;
 
     // Allocate memory for waveform analysis
     waveform_data = new double[waveform_size];
@@ -59,12 +53,6 @@ AudioTrack::AudioTrack(const AudioTrack &other) : title(other.title),
                                                   waveform_size(other.waveform_size)
 {
 
-    // std::cout << "AudioTrack created: " << title << " by \n";
-    // for (const auto &artist : artists)
-    // {
-    //     std::cout << artist << " ";
-    // }
-    // std::cout << std::endl;
 
 // TODO: Implement the copy constructor
 #ifdef DEBUG
